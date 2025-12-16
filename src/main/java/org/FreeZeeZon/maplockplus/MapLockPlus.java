@@ -1,5 +1,7 @@
 package org.FreeZeeZon.maplockplus;
 
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -65,6 +67,15 @@ public class MapLockPlus extends JavaPlugin implements Listener, TabCompleter {
         }
 
         getLogger().info("MapLockPlus enabled!");
+        // You can find the plugin id of your plugins on
+        // the page https://bstats.org/what-is-my-plugin-id
+        int pluginId =28376/* INSERT PLUGIN ID HERE */;
+        Metrics metrics = new Metrics(this, pluginId);
+
+        // Optional: Add custom charts
+        metrics.addCustomChart(
+                new SimplePie("chart_id", () -> "My value")
+        );
     }
 
     private void checkCrafterSupport() {
